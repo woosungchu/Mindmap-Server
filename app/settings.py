@@ -17,7 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
                 'alt-mindmap.herokuapp.com',
                 'localhost',
-                '127.0.0.1'
+                '127.0.0.1',
+                'likeable-ring.surge.sh'
                 ]
 
 #EMBER_OUTPUT = os.path.join(BASE_DIR, 'static')
