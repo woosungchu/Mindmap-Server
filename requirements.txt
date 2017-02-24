@@ -3,7 +3,8 @@ djangorestframework==3.5.3
 dj-database-url==0.4.2
 psycopg2==2.6.2
 djangorestframework-jwt==1.9.0
-httpie
+httpie==0.9.9
+django-cors-headers==2.0.2
 
 #deploy
 gunicorn==19.6.0
