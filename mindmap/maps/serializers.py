@@ -2,21 +2,17 @@ from rest_framework import serializers
 from maps.models import Map, Node
 from django.contrib.auth.models import User
 
-class UserSerializer(serializers.ModelSerializer):
-    #maps = MapSerializer(many=True)
-
+class MapUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id','username','email','password')
-        extra_kwargs = {'password': {'write_only': True}}
-        read_only_fields = ('date_created', 'date_modified')
+        fields = ('id','username')
 
 class NodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Node
 
 class MapSerializer(serializers.ModelSerializer):
-    author = UserSerializer(required=False, allow_null=True)
+    author = MapUserSerializer(required=False, allow_null=True)
     nodes = NodeSerializer(many=True)
 
     class Meta:
