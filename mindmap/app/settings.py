@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #
     'rest_framework',
     'maps.apps.MapsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
