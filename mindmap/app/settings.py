@@ -83,6 +83,10 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
+TEST_DATABASE = {
+    'default': dj_database_url.config(default=os.environ.get('TEST_DATABASE_URL'))
+}
+TEST_RUNNER = 'testrunner.HerokuTestSuiteRunner'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
