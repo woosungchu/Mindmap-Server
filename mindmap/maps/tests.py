@@ -8,9 +8,9 @@ class MapsTests(APITestCase):
         """
         Ensure we can get list of map
         """
-        url = reverse('map-list')
+        url = reverse('api:map-list')
         #data = {'name': 'DabApps'}
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         #self.assertEqual(Account.objects.count(), 1)
         #self.assertEqual(Account.objects.get().name, 'DabApps')
