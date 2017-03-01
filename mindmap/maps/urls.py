@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register(r'maps', views.MapViewSet)
 
 urlpatterns=[
-    url(r'^api/', include(router.urls, namespace='api')),
+    url(r'^api/', include(router.urls, namespace='api-map')),
 ]

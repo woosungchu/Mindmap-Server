@@ -8,7 +8,7 @@ class MapsTests(APITestCase):
         """
         Ensure we can get list of map
         """
-        url = reverse('api:map-list')
+        url = reverse('api-map:map-list')
         #data = {'name': 'DabApps'}
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)

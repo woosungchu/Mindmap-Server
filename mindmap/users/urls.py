@@ -7,7 +7,7 @@ router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 
 urlpatterns=[
-    url(r'^api/', include(router.urls, namespace='api')),
-    url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api/', include(router.urls, namespace='api-user')),
+    url(r'^api-token-auth/', obtain_jwt_token, name="login"),
+    url(r'^api-token-refresh/', refresh_jwt_token, name="jwt-refresh"),
 ]
