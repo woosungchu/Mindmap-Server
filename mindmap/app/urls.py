@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from maps.views import MapViewSet
+from users.views import UserViewSet
+
+router = DefaultRouter()
+router.register(r'maps', MapViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('maps.urls')),
+    url(r'^api/', include(router.urls, namespace='api')),
+    #url(r'^', include('maps.urls')),
     url(r'^', include('users.urls')),
 ]

@@ -10,6 +10,7 @@ class MapUserSerializer(serializers.ModelSerializer):
 class NodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Node
+        fields = ('id','type','data')
 
 class MapSerializer(serializers.ModelSerializer):
     author = MapUserSerializer(required=False, allow_null=True)
@@ -17,5 +18,5 @@ class MapSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Map
-        fields = ('id','author','title','nodes')#,'node','descript','path
+        fields = ('id','author','title','nodes')
         depth = 1

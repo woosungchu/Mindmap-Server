@@ -3,10 +3,8 @@ from django.db import models
 class Map(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey('auth.User')#, related_name='maps')
-    title = models.TextField(default='Untitled')
+    title = models.CharField(default='Untitled', max_length=100)
     # node = models.TextField(null=False)
-    # descript = models.TextField(null=True)
-    # path = models.TextField(null=True)
 
     class Meta:
         ordering = ('created','title',)
@@ -15,8 +13,9 @@ class Map(models.Model):
         return '%s - %s' % (self.title,self.created)
 
 class Node(models.Model):
-    map = models.ForeignKey(Map,related_name="nodes")
-    name = models.TextField(default='Node')
+    map = models.ForeignKey(Map, related_name="nodes")
+    type = models.CharField(default='Node', max_length=50)
+    data = models.TextField(default='New Node', blank=True)
 
     def __str__(self):
-        return self.node;
+        return self.data;
