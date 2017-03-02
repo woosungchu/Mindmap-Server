@@ -10,12 +10,13 @@ class Map(models.Model):
         ordering = ('created','title',)
 
     def __str__(self):
-        return '%s - %s' % (self.title,self.created)
+        return '%s. %s' % (self.id,self.title)
 
 class Node(models.Model):
     map = models.ForeignKey(Map, related_name="nodes")
     type = models.CharField(default='Node', max_length=50)
-    data = models.TextField(default='New Node', blank=True)
+    content = models.TextField(default='New Node', blank=True)
 
     def __str__(self):
-        return self.data;
+        content = (self.content[:75] + '..') if len(self.content) > 75 else self.content
+        return '%s.%s - %s.%s' % (self.map.id, self.map.title, self.id, content)

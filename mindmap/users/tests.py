@@ -19,7 +19,7 @@ class UsersApiTest(APITestCase):
         - positive http status
         - token should not contain password
         """
-        url = reverse('api-user:user-list')
+        url = reverse('api:user-list')
         data = {
             'username': 'testuser',
             "email": "test@testuser.com",
