@@ -32,11 +32,11 @@ class BaseTestCase(APITestCase):
         #node
         self.type = 'Node'
         self.content = 'test content'
-        # self.nodedata = {
-        #     'map' : self.map,
-        #     'type' : self.type,
-        #     'content' : self.content
-        # }
+        self.nodedata = {
+            'map_id' : self.map.id,
+            'type' : self.type,
+            'content' : self.content
+        }
         self.node = Node.objects.create(map=self.map, type=self.type, content=self.content)
 
         #token
@@ -83,21 +83,23 @@ class MapsTests(BaseTestCase):
 
 
 #NODES
-# class NodesTests(BaseTestCase):
-"""
-- add new node to certain map
-- remove the node from map
-"""
+class NodesTests(BaseTestCase):
+    """
+    - add new node to certain map
+    - remove the node from map
+    """
 
-    # def test_node_create(self):
-"""
-get all nodes of specific map
-"""
-        # url = reverse('api:node-list',kwargs={'pk':self.map.id})
-        # response = self.client.get(url, format='json')
-        # print('CREATE')
-        # print(response.data)
-        # print(response.status_code)
+    def test_node_create(self):
+        """
+        get all nodes of specific map
+        - user check
+        """
+        url = reverse('api:node-list')
+        #response = self.client.post(url, self.nodedata, format='json')
+        print('CREATE')
+        print(response.data)
+        print(response.status_code)
+        #self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     # def test_node_remove(self):
 """

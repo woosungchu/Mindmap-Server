@@ -13,7 +13,7 @@ class Map(models.Model):
         return '%s. %s' % (self.id,self.title)
 
 class Node(models.Model):
-    map = models.ForeignKey(Map, related_name="nodes")
+    map = models.ForeignKey(Map, related_name="nodes", on_delete=models.CASCADE)
     type = models.CharField(default='Node', max_length=50)
     content = models.TextField(default='New Node', blank=True)
 

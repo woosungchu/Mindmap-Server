@@ -16,16 +16,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
-from maps.views import MapViewSet
+from maps.views import MapViewSet, NodeViewSet
 from users.views import UserViewSet
 
-router = DefaultRouter()
-router.register(r'maps', MapViewSet)
-router.register(r'users', UserViewSet)
+api = DefaultRouter()
+api.register(r'maps', MapViewSet)
+api.register(r'users', UserViewSet)
+api.register(r'nodes', NodeViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls, namespace='api')),
-    #url(r'^', include('maps.urls')),
-    url(r'^', include('users.urls')),
+    url(r'^api/', include(api.urls, namespace='api')),
+    url(r'^', include('users.urls')),#login, logout
 ]

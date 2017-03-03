@@ -10,7 +10,7 @@ class MapUserSerializer(serializers.ModelSerializer):
 class NodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Node
-        fields = ('id','type','content')
+        fields = ('id','type','content')#'map',
 
 class MapSerializer(serializers.ModelSerializer):
     author = MapUserSerializer(required=False, allow_null=True)
