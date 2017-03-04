@@ -8,9 +8,11 @@ class MapUserSerializer(serializers.ModelSerializer):
         fields = ('id','username')
 
 class NodeSerializer(serializers.ModelSerializer):
+    map = serializers.PrimaryKeyRelatedField(queryset=Map.objects.all())
+
     class Meta:
         model = Node
-        fields = ('id','type','content')#'map',
+        fields = ('id','type','content','map')
 
 class MapSerializer(serializers.ModelSerializer):
     author = MapUserSerializer(required=False, allow_null=True)

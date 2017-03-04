@@ -33,7 +33,7 @@ class BaseTestCase(APITestCase):
         self.type = 'Node'
         self.content = 'test content'
         self.nodedata = {
-            'map_id' : self.map.id,
+            'map' : self.map.id,
             'type' : self.type,
             'content' : self.content
         }
@@ -95,18 +95,27 @@ class NodesTests(BaseTestCase):
         - user check
         """
         url = reverse('api:node-list')
-        #response = self.client.post(url, self.nodedata, format='json')
-        print('CREATE')
-        print(response.data)
-        print(response.status_code)
-        #self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    # def test_node_remove(self):
-"""
-remove node from specific node
-"""
-        # url = reverse('api:node-detail',kwargs={'pk':self.node.id})
-        # response = self.client.delete(url, format='json')
-        # print('Delete')
-        # print(response.data)
-        # print(response.status_code)
+        response = self.client.post(url, self.nodedata, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_node_remove(self):
+        """
+        remove node from specific node
+        """
+        url = reverse('api:node-detail',kwargs={'pk':self.node.id})
+        response = self.client.delete(url, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_node_update(self):
+        """
+        TODO fix it after
+        update node
+        """
+        updated_content = 'updated_content'
+        url = reverse('api:node-detail',kwargs={'pk':self.node.id})
+        response = self.client.put(url, {'content':updated_content}, format='json')
+        print(dir(response.data.keys))
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(response.data['content'], updated_content)

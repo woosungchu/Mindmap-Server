@@ -4,7 +4,6 @@ class Map(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey('auth.User')#, related_name='maps')
     title = models.CharField(default='Untitled', max_length=100)
-    # node = models.TextField(null=False)
 
     class Meta:
         ordering = ('created','title',)
