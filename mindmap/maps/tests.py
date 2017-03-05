@@ -110,12 +110,12 @@ class NodesTests(BaseTestCase):
 
     def test_node_update(self):
         """
-        TODO fix it after
         update node
         """
         updated_content = 'updated_content'
         url = reverse('api:node-detail',kwargs={'pk':self.node.id})
-        response = self.client.put(url, {'content':updated_content}, format='json')
-        print(dir(response.data.keys))
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.nodedata['content'] = updated_content
+        response = self.client.put(url, self.nodedata, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['content'], updated_content)

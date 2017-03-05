@@ -27,5 +27,5 @@ api.register(r'nodes', NodeViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(api.urls, namespace='api')),
-    url(r'^', include('users.urls')),#login, logout
+    url(r'^', include('users.urls')),#login, jwt
 ]
