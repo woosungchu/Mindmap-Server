@@ -12,8 +12,9 @@ class Map(models.Model):
         return '%s. %s' % (self.id,self.title)
 
 class Node(models.Model):
+    NODE_TYPE = (('N','Node'),('T','Textbox'),)
     map = models.ForeignKey(Map, related_name="nodes", on_delete=models.CASCADE)
-    type = models.CharField(default='Node', max_length=50)
+    type = models.CharField(default='N', max_length=50, choices=NODE_TYPE)
     content = models.TextField(default='New Node', blank=True)
 
     def __str__(self):
