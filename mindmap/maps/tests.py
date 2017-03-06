@@ -29,7 +29,7 @@ class BaseTestCase(APITestCase):
         self.map = Map.objects.create(author=self.author, title=self.title)
 
         #node
-        self.type = 'Node'
+        self.type = 'N'
         self.content = 'test content'
         self.nodedata = {
             'map' : self.map.id,
