@@ -1,6 +1,6 @@
-from rest_framework.permissions import BasePermission
+from rest_framework import permissions
 
-class MapIsOwnerOrReadOnly(BasePermission):
+class MapIsOwnerOrReadOnly(permissions.BasePermission):
     """
     Object-level permission to only allow owners of an object to edit it.
     """
@@ -13,7 +13,7 @@ class MapIsOwnerOrReadOnly(BasePermission):
 
         return map.author == request.user
 
-class NodeIsOwnerOrReadOnly(BasePermission):
+class NodeIsOwnerOrReadOnly(permissions.BasePermission):
     """
     Object-level permission to only allow owners of an object to edit it.
     """

@@ -1,10 +1,12 @@
 from rest_framework import viewsets, permissions
 from maps.models import Map, Node
 from maps.serializers import MapSerializer, NodeSerializer
+from maps.permissions import MapIsOwnerOrReadOnly, NodeIsOwnerOrReadOnly
 
 class MapViewSet(viewsets.ModelViewSet):
     queryset = Map.objects.all()
     serializer_class = MapSerializer
+    permission_classes = (MapIsOwnerOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(author = self.request.user)
@@ -12,6 +14,7 @@ class MapViewSet(viewsets.ModelViewSet):
 class NodeViewSet(viewsets.ModelViewSet):
     queryset = Node.objects.all()
     serializer_class = NodeSerializer
+    permission_classes = (NodeIsOwnerOrReadOnly,)
 
     # def get_queryset(self):
     #     """
