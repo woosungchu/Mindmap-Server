@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY','THIS_IS_DEFAULT_SECRET_KEY_FOR_TEST')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('ENVIRONMENT','DEV') == 'DEV'
 
 ALLOWED_HOSTS = [
                 's-mindmap.herokuapp.com',
