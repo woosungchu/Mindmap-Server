@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','THIS_IS_DEFAULT_SECRET_KEY_FOR_TEST')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-                'alt-mindmap.herokuapp.com',
+                's-mindmap.herokuapp.com',
                 'localhost',
                 '127.0.0.1',
                 'corsheaders'
