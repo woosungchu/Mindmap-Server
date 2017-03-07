@@ -22,7 +22,8 @@ ALLOWED_HOSTS = [
                 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'likeable-ring.surge.sh'
+    'likeable-ring.surge.sh',
+    'w-mindmap.herokuapp.com'
 )
 
 
