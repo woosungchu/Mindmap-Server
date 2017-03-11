@@ -121,7 +121,13 @@ class MapsTests(BaseTestCase):
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-
+    def test_filter_map(self):
+        """
+        filter maps with author
+        """
+        url = reverse('api:map-list')
+        response = self.client.get(url, {'author':self.author.id}, format='json')
+        self.assertEqual(response.data[0]['author']['id'], self.author.id)
 
 #NODES
 class NodesTests(BaseTestCase):
