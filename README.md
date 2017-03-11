@@ -21,3 +21,7 @@
 - http http://127.0.0.1:8000/api/maps.json
 - http -a test:test POST http://127.0.0.1:8000/api/maps
 - http POST http://127.0.0.1:8000/api-token-auth/ username=test password=test
+
+#### Refrences
+- [Status Code](http://www.django-rest-framework.org/api-guide/status-codes/)
+- [REST api pattern](http://www.django-rest-framework.org/api-guide/routers/#defaultrouter)
